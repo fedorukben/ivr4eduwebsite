@@ -4,222 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IVR4EDU - VR for Education</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #f5f5f5;
-            --text-color: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        nav {
-            background-color: #333;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        section {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section:nth-child(even) {
-            background-color: var(--secondary-color);
-        }
-
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .search-container {
-            margin: 1rem 0;
-        }
-
-        #searchInput {
-            padding: 0.5rem;
-            width: 100%;
-            max-width: 300px;
-            margin-bottom: 1rem;
-        }
-
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .app-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-        }
-
-        .app-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .app-card-content {
-            padding: 1rem;
-        }
-
-        .curriculum-connections, .lesson-plans {
-            margin-top: 1rem;
-            padding: 1rem;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-            display: none;
-        }
-
-        .toggle-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-
-        .reflection-entry {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        #reflectionForm {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 2rem 0;
-        }
-
-        #reflectionForm textarea {
-            height: 150px;
-            padding: 0.5rem;
-        }
-
-        #reflectionForm button {
-            align-self: flex-start;
-        }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.css" rel="stylesheet">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <h1>IVR4EDU</h1>
-        <p>Virtual Reality for Education</p>
+<body class="bg-gray-50">
+    <!-- Hero Section -->
+    <header class="relative bg-gradient-to-r from-blue-600 to-indigo-600">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl text-center">
+                IVR4EDU
+            </h1>
+            <p class="mt-6 text-xl text-gray-100 text-center max-w-3xl mx-auto">
+                Transforming Education Through Virtual Reality
+            </p>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#hints">Hints & How-Tos</a></li>
-            <li><a href="#apps">VR Apps</a></li>
-            <li><a href="#reflections">Reflections</a></li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center space-x-8">
+                <a href="#hints" class="px-3 py-4 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+                    Hints & How-Tos
+                </a>
+                <a href="#apps" class="px-3 py-4 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+                    VR Apps
+                </a>
+                <a href="#reflections" class="px-3 py-4 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+                    Reflections
+                </a>
+            </div>
+        </div>
     </nav>
 
-    <section id="hints">
-        <h2>Hints & How-Tos for Educators</h2>
-        <div class="hints-content">
-            <h3>Getting Started with VR in Education</h3>
-            <ul>
-                <li>Ensure proper setup of VR equipment in your classroom</li>
-                <li>Establish clear guidelines for VR usage</li>
-                <li>Consider time management for VR sessions</li>
-                <li>Plan for technical troubleshooting</li>
-            </ul>
-
-            <h3>Best Practices</h3>
-            <ul>
-                <li>Start with short VR sessions (15-20 minutes)</li>
-                <li>Have clear learning objectives for each VR activity</li>
-                <li>Provide alternative activities for students who may experience motion sickness</li>
-                <li>Include reflection and discussion time after VR experiences</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="apps">
-        <h2>VR Applications</h2>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search for VR apps...">
-        </div>
-        <div class="app-grid">
-            <!-- Example App Card -->
-            <div class="app-card">
-                <img src="/api/placeholder/300/200" alt="VR App Screenshot">
-                <div class="app-card-content">
-                    <h3>Sample VR App</h3>
-                    <p>Description of the VR application and its educational benefits.</p>
-                    <button class="toggle-btn" onclick="toggleCurriculum(this)">Show Curriculum Connections</button>
-                    <div class="curriculum-connections">
-                        <h4>Curriculum Connections</h4>
-                        <ul>
-                            <li>Science: Physical Systems</li>
-                            <li>Math: Spatial Reasoning</li>
-                            <li>Technology: Digital Literacy</li>
-                        </ul>
-                    </div>
-                    <button class="toggle-btn" onclick="toggleLessonPlan(this)">Show Lesson Plan</button>
-                    <div class="lesson-plans">
-                        <h4>Lesson Plan</h4>
-                        <p>Detailed lesson plan content would go here...</p>
-                    </div>
+    <!-- Hints Section -->
+    <section id="hints" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+                Hints & How-Tos for Educators
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4">
+                        Getting Started with VR
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="text-gray-700">Ensure proper setup of VR equipment in your classroom</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="text-gray-700">Establish clear guidelines for VR usage</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-semibold text-indigo-800 mb-4">
+                        Best Practices
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="text-gray-700">Start with short VR sessions (15-20 minutes)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="text-gray-700">Include reflection and discussion time</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!-- More app cards would be dynamically added here -->
         </div>
     </section>
 
-    <section id="reflections">
-        <h2>Reflections</h2>
-        <form id="reflectionForm">
-            <textarea placeholder="Share your experience with VR in education..."></textarea>
-            <button type="submit" class="toggle-btn">Submit Reflection</button>
-        </form>
-        <div id="reflectionsContainer">
-            <!-- Reflections will be dynamically added here -->
+    <!-- Apps Section -->
+    <section id="apps" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+                VR Applications
+            </h2>
+            
+            <!-- Search Bar -->
+            <div class="max-w-xl mx-auto mb-8">
+                <div class="relative">
+                    <input type="text" id="searchInput" 
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                           placeholder="Search for VR apps...">
+                    <span class="absolute right-3 top-3 text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- App Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Example App Card -->
+                <div class="app-card bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105">
+                    <img src="/api/placeholder/400/300" alt="VR App Screenshot" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Sample VR App</h3>
+                        <p class="text-gray-600 mb-4">Description of the VR application and its educational benefits.</p>
+                        
+                        <button onclick="toggleCurriculum(this)" 
+                                class="w-full mb-3 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            Show Curriculum Connections
+                        </button>
+                        <div class="curriculum-connections hidden">
+                            <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                                <h4 class="font-semibold text-blue-800 mb-2">Curriculum Connections</h4>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li>Science: Physical Systems</li>
+                                    <li>Math: Spatial Reasoning</li>
+                                    <li>Technology: Digital Literacy</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleLessonPlan(this)"
+                                class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                            Show Lesson Plan
+                        </button>
+                        <div class="lesson-plans hidden">
+                            <div class="bg-indigo-50 rounded-lg p-4 mt-4">
+                                <h4 class="font-semibold text-indigo-800 mb-2">Lesson Plan</h4>
+                                <p class="text-gray-700">Detailed lesson plan content would go here...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More app cards would be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflections Section -->
+    <section id="reflections" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+                Reflections
+            </h2>
+            
+            <form id="reflectionForm" class="max-w-2xl mx-auto mb-12">
+                <textarea 
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 h-32"
+                    placeholder="Share your experience with VR in education..."></textarea>
+                <button type="submit" 
+                        class="mt-4 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-colors">
+                    Submit Reflection
+                </button>
+            </form>
+
+            <div id="reflectionsContainer" class="space-y-6">
+                <!-- Reflections will be dynamically added here -->
+            </div>
         </div>
     </section>
 
@@ -227,16 +177,16 @@
         // Toggle Curriculum Connections
         function toggleCurriculum(button) {
             const content = button.nextElementSibling;
-            content.style.display = content.style.display === 'none' ? 'block' : 'none';
-            button.textContent = content.style.display === 'none' ? 
+            content.classList.toggle('hidden');
+            button.textContent = content.classList.contains('hidden') ? 
                 'Show Curriculum Connections' : 'Hide Curriculum Connections';
         }
 
         // Toggle Lesson Plans
         function toggleLessonPlan(button) {
             const content = button.nextElementSibling;
-            content.style.display = content.style.display === 'none' ? 'block' : 'none';
-            button.textContent = content.style.display === 'none' ? 
+            content.classList.toggle('hidden');
+            button.textContent = content.classList.contains('hidden') ? 
                 'Show Lesson Plan' : 'Hide Lesson Plan';
         }
 
@@ -262,10 +212,10 @@
             if (reflection.trim()) {
                 const container = document.getElementById('reflectionsContainer');
                 const entry = document.createElement('div');
-                entry.className = 'reflection-entry';
+                entry.className = 'bg-gray-50 rounded-lg p-6 shadow-sm';
                 entry.innerHTML = `
-                    <p>${reflection}</p>
-                    <small>Posted on ${new Date().toLocaleDateString()}</small>
+                    <p class="text-gray-700 mb-2">${reflection}</p>
+                    <small class="text-gray-500">Posted on ${new Date().toLocaleDateString()}</small>
                 `;
                 container.insertBefore(entry, container.firstChild);
                 textarea.value = '';
