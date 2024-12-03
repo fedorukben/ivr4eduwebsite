@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVR4EDU - VR for Education</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .search-container {
+            margin: 1rem 0;
+        }
+
+        #searchInput {
+            padding: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 1rem;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .app-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .app-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .app-card-content {
+            padding: 1rem;
+        }
+
+        .curriculum-connections, .lesson-plans {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .toggle-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .reflection-entry {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #reflectionForm {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem 0;
+        }
+
+        #reflectionForm textarea {
+            height: 150px;
+            padding: 0.5rem;
+        }
+
+        #reflectionForm button {
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>IVR4EDU</h1>
+        <p>Virtual Reality for Education</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#hints">Hints & How-Tos</a></li>
+            <li><a href="#apps">VR Apps</a></li>
+            <li><a href="#reflections">Reflections</a></li>
+        </ul>
+    </nav>
+
+    <section id="hints">
+        <h2>Hints & How-Tos for Educators</h2>
+        <div class="hints-content">
+            <h3>Getting Started with VR in Education</h3>
+            <ul>
+                <li>Ensure proper setup of VR equipment in your classroom</li>
+                <li>Establish clear guidelines for VR usage</li>
+                <li>Consider time management for VR sessions</li>
+                <li>Plan for technical troubleshooting</li>
+            </ul>
+
+            <h3>Best Practices</h3>
+            <ul>
+                <li>Start with short VR sessions (15-20 minutes)</li>
+                <li>Have clear learning objectives for each VR activity</li>
+                <li>Provide alternative activities for students who may experience motion sickness</li>
+                <li>Include reflection and discussion time after VR experiences</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="apps">
+        <h2>VR Applications</h2>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for VR apps...">
+        </div>
+        <div class="app-grid">
+            <!-- Example App Card -->
+            <div class="app-card">
+                <img src="/api/placeholder/300/200" alt="VR App Screenshot">
+                <div class="app-card-content">
+                    <h3>Sample VR App</h3>
+                    <p>Description of the VR application and its educational benefits.</p>
+                    <button class="toggle-btn" onclick="toggleCurriculum(this)">Show Curriculum Connections</button>
+                    <div class="curriculum-connections">
+                        <h4>Curriculum Connections</h4>
+                        <ul>
+                            <li>Science: Physical Systems</li>
+                            <li>Math: Spatial Reasoning</li>
+                            <li>Technology: Digital Literacy</li>
+                        </ul>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleLessonPlan(this)">Show Lesson Plan</button>
+                    <div class="lesson-plans">
+                        <h4>Lesson Plan</h4>
+                        <p>Detailed lesson plan content would go here...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- More app cards would be dynamically added here -->
+        </div>
+    </section>
+
+    <section id="reflections">
+        <h2>Reflections</h2>
+        <form id="reflectionForm">
+            <textarea placeholder="Share your experience with VR in education..."></textarea>
+            <button type="submit" class="toggle-btn">Submit Reflection</button>
+        </form>
+        <div id="reflectionsContainer">
+            <!-- Reflections will be dynamically added here -->
+        </div>
+    </section>
+
+    <script>
+        // Toggle Curriculum Connections
+        function toggleCurriculum(button) {
+            const content = button.nextElementSibling;
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            button.textContent = content.style.display === 'none' ? 
+                'Show Curriculum Connections' : 'Hide Curriculum Connections';
+        }
+
+        // Toggle Lesson Plans
+        function toggleLessonPlan(button) {
+            const content = button.nextElementSibling;
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            button.textContent = content.style.display === 'none' ? 
+                'Show Lesson Plan' : 'Hide Lesson Plan';
+        }
+
+        // Search Functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchText = e.target.value.toLowerCase();
+            const apps = document.querySelectorAll('.app-card');
+            
+            apps.forEach(app => {
+                const title = app.querySelector('h3').textContent.toLowerCase();
+                const description = app.querySelector('p').textContent.toLowerCase();
+                const isVisible = title.includes(searchText) || description.includes(searchText);
+                app.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+
+        // Handle Reflection Submissions
+        document.getElementById('reflectionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const textarea = this.querySelector('textarea');
+            const reflection = textarea.value;
+            
+            if (reflection.trim()) {
+                const container = document.getElementById('reflectionsContainer');
+                const entry = document.createElement('div');
+                entry.className = 'reflection-entry';
+                entry.innerHTML = `
+                    <p>${reflection}</p>
+                    <small>Posted on ${new Date().toLocaleDateString()}</small>
+                `;
+                container.insertBefore(entry, container.firstChild);
+                textarea.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
